@@ -1,14 +1,19 @@
 import { motion } from 'framer-motion';
 import { Loader2 } from 'lucide-react';
 import clsx from 'clsx';
-import { ButtonHTMLAttributes, forwardRef } from 'react';
+import { forwardRef } from 'react';
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+interface ButtonProps {
     variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'danger';
     size?: 'sm' | 'md' | 'lg';
     isLoading?: boolean;
     leftIcon?: React.ReactNode;
     rightIcon?: React.ReactNode;
+    className?: string;
+    disabled?: boolean;
+    type?: 'button' | 'submit' | 'reset';
+    onClick?: () => void;
+    children?: React.ReactNode;
 }
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(({
@@ -20,7 +25,8 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(({
     rightIcon,
     className,
     disabled,
-    ...props
+    type = 'button',
+    onClick,
 }, ref) => {
     const baseStyles = 'inline-flex items-center justify-center gap-2 font-medium rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-surface-900 disabled:opacity-50 disabled:cursor-not-allowed';
 
@@ -41,10 +47,11 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(({
     return (
         <motion.button
             ref={ref}
+            type={type}
             whileTap={{ scale: 0.98 }}
             className={clsx(baseStyles, variants[variant], sizes[size], className)}
             disabled={disabled || isLoading}
-            {...props}
+            onClick={onClick}
         >
             {isLoading ? (
                 <Loader2 className="w-4 h-4 animate-spin" />

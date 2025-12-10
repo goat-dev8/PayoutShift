@@ -23,9 +23,7 @@
         "lru-cache": "^11.0.2",
         "mongoose": "^8.9.2",
         "morgan": "^1.10.0",
-        "uuid": "^10.0.0"
-    },
-    "devDependencies": {
+        "uuid": "^10.0.0",
         "@types/bcryptjs": "^2.4.6",
         "@types/cors": "^2.8.17",
         "@types/express": "^5.0.0",
@@ -33,7 +31,9 @@
         "@types/morgan": "^1.9.9",
         "@types/node": "^22.10.1",
         "@types/uuid": "^10.0.0",
-        "tsx": "^4.19.2",
         "typescript": "^5.7.2"
+    },
+    "devDependencies": {
+        "tsx": "^4.19.2"
     }
 }
