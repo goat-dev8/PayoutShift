@@ -625,8 +625,21 @@ export default function BatchDetailPage() {
 
                             {(!batch.recipients || batch.recipients.length === 0) && (
                                 <tr>
-                                    <td colSpan={7} className="px-6 py-12 text-center text-surface-500">
-                                        No recipients yet
+                                    <td colSpan={7} className="px-6 py-12 text-center">
+                                        {batch.mode === 'claim-links' && batch.claims && batch.claims.length > 0 ? (
+                                            <div className="space-y-2">
+                                                <div className="flex items-center justify-center gap-2 text-warning-500">
+                                                    <AlertCircle className="w-5 h-5" />
+                                                    <span className="font-medium">Waiting for recipients to claim their links</span>
+                                                </div>
+                                                <p className="text-surface-500 text-sm max-w-md mx-auto">
+                                                    Share the claim links below with your recipients. Once they submit their wallet addresses,
+                                                    they'll appear here and you can prepare shifts.
+                                                </p>
+                                            </div>
+                                        ) : (
+                                            <span className="text-surface-500">No recipients yet</span>
+                                        )}
                                     </td>
                                 </tr>
                             )}
