@@ -399,6 +399,21 @@ router.post('/:id/prepare', requireAuth, async (req: Request, res: Response) => 
         });
 
         if (recipients.length === 0) {
+            // For claim-links mode, check if there are unclaimed claims
+            if (batch.mode === 'claim-links') {
+                const pendingClaims = await Claim.countDocuments({
+                    batchId: batch._id,
+                    status: 'pending'
+                });
+
+                if (pendingClaims > 0) {
+                    return res.status(400).json({
+                        success: false,
+                        error: `No claimed recipients yet. ${pendingClaims} recipient(s) need to claim their links first before you can prepare shifts. Share the claim links and wait for recipients to submit their wallet addresses.`,
+                    });
+                }
+            }
+
             return res.status(400).json({
                 success: false,
                 error: 'No pending recipients to prepare',
