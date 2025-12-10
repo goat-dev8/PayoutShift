@@ -113,7 +113,8 @@ export default function CoinSelector({
     };
 
     const getCoinIcon = (coin: string, network: string) => {
-        return `/api/coins/icon/${coin.toLowerCase()}-${network.toLowerCase()}`;
+        const apiBase = import.meta.env.VITE_API_BASE_URL || '/api';
+        return `${apiBase}/coins/icon/${coin.toLowerCase()}-${network.toLowerCase()}`;
     };
 
     return (

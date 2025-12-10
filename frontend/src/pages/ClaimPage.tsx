@@ -267,7 +267,7 @@ export default function ClaimPage() {
                                         }`}
                                 >
                                     <img
-                                        src={`/api/coins/icon/${coin.coin.toLowerCase()}-${coin.networks[0]}`}
+                                        src={`${import.meta.env.VITE_API_BASE_URL || '/api'}/coins/icon/${coin.coin.toLowerCase()}-${coin.networks[0]}`}
                                         alt={coin.coin}
                                         className="w-8 h-8 rounded-full"
                                         onError={(e) => {
@@ -329,7 +329,7 @@ export default function ClaimPage() {
                         <div className="bg-surface-50 dark:bg-surface-800 rounded-lg p-4 mb-6">
                             <div className="flex items-center gap-3">
                                 <img
-                                    src={`/api/coins/icon/${selectedCoin.toLowerCase()}-${selectedNetwork}`}
+                                    src={`${import.meta.env.VITE_API_BASE_URL || '/api'}/coins/icon/${selectedCoin.toLowerCase()}-${selectedNetwork}`}
                                     alt={selectedCoin}
                                     className="w-10 h-10 rounded-full"
                                     onError={(e) => {
