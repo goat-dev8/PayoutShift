@@ -9,7 +9,7 @@ import { setWalletAddress } from '../lib/api';
 // Create wagmi config
 const config = getDefaultConfig({
     appName: 'PayoutShift',
-    projectId: 'payoutshift-buildathon', // WalletConnect project ID (get from cloud.walletconnect.com)
+    projectId: '3c62108d60423fb1dd7f739662a118f9', // WalletConnect Cloud project ID
     chains: [mainnet, polygon, arbitrum, optimism, base],
     ssr: false,
 });
