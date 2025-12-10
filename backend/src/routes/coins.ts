@@ -6,7 +6,7 @@ import { LRUCache } from 'lru-cache';
 const router = Router();
 
 // Cache for coins (24 hours)
-const coinsCache = new LRUCache<string, unknown>({
+const coinsCache = new LRUCache<string, object>({
     max: 1,
     ttl: 1000 * 60 * 60 * 24, // 24 hours
 });
